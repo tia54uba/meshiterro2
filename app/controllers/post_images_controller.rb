@@ -14,13 +14,11 @@ class PostImagesController < ApplicationController
   end
 
   def index
-    @post_images = PostImage.all
-  end
+    @post_images = PostImage.page(params[:page])  end
 
   def show
     @post_image = PostImage.find(params[:id])
-    @post_comment = PostComment.new
-  end
+    @post_images = @user.post_images.page(params[:page])  end
 
   def destroy
     @post_image = PostImage.find(params[:id])
